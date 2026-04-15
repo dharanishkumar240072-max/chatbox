@@ -1,0 +1,5 @@
+com\chatbox\config\FirebaseConfig.class
+com\chatbox\Application.class
+com\chatbox\controller\ChatController.class
+com\chatbox\Application$1.class
+com\chatbox\model\Message.class

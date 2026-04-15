@@ -1,0 +1,16 @@
+services:
+  # App A - Java Spring Boot Backend
+  - type: web
+    name: app-a-backend
+    env: docker
+    dockerContext: .
+    dockerfilePath: ./app-a/backend/Dockerfile
+    plan: free
+    
+  # App B - Golang Backend
+  - type: web
+    name: app-b-backend
+    env: docker
+    dockerContext: .
+    dockerfilePath: ./app-b/backend/Dockerfile
+    plan: free
