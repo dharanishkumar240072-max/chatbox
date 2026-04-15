@@ -3,3 +3,4 @@ dist/
 .env
 *.exe
 *.log
+firebase/serviceAccountKey.json

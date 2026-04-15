@@ -15,8 +15,8 @@ WORKDIR /app/app-b/backend
 # Copy the compiled binary
 COPY --from=build /app/app-b/backend/main .
 
-# Copy the shared firebase directory
-COPY --from=build /app/firebase /app/firebase
+# (Optional) The firebase directory will be provided by Render Secret Files
+# instead of being copied through Git.
 
 RUN chmod +x main
 EXPOSE 8080

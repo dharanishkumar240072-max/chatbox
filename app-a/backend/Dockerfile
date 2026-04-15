@@ -15,8 +15,8 @@ WORKDIR /app
 # Copy the compiled jar
 COPY --from=build /app/app-a/backend/target/*.jar app.jar
 
-# Copy the shared firebase directory to the expected relative path
-COPY --from=build /app/firebase /firebase
+# (Optional) The firebase directory will be provided by Render Secret Files
+# instead of being copied through Git.
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

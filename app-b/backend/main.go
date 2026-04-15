@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"chatbox-backend/config"
 	"chatbox-backend/handlers"
@@ -19,8 +20,13 @@ func main() {
 	// Setup routes
 	http.HandleFunc("/api/messages", handlers.EnableCORS(handlers.MessageHandler(client)))
 
-	fmt.Println("App B (Golang) Backend listening on port 8081...")
-	if err := http.ListenAndServe(":8081", nil); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8081"
+	}
+
+	fmt.Printf("App B (Golang) Backend listening on port %s...\n", port)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
 }
