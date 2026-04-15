@@ -15,8 +15,8 @@ WORKDIR /app
 # Copy the compiled jar
 COPY --from=build /app/app-a/backend/target/*.jar app.jar
 
-# (Optional) The firebase directory will be provided by Render Secret Files
-# instead of being copied through Git.
+# Render mounts secret files at /etc/secrets/. We symlink it to where the Java code expects it.
+RUN mkdir -p /firebase && ln -s /etc/secrets/serviceAccountKey.json /firebase/serviceAccountKey.json
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

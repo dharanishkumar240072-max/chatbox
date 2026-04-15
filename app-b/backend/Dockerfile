@@ -15,8 +15,8 @@ WORKDIR /app/app-b/backend
 # Copy the compiled binary
 COPY --from=build /app/app-b/backend/main .
 
-# (Optional) The firebase directory will be provided by Render Secret Files
-# instead of being copied through Git.
+# Render mounts secret files at /etc/secrets/. We symlink it to where the Go code expects it.
+RUN mkdir -p /app/firebase && ln -s /etc/secrets/serviceAccountKey.json /app/firebase/serviceAccountKey.json
 
 RUN chmod +x main
 EXPOSE 8080
